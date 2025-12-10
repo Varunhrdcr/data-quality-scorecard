@@ -1,3 +1,33 @@
+import streamlit as st
+import pandas as pd
+
+# 🔴 IMPORTANT: no dot here!
+from data_loader import load_dataset
+from dq_metrics import build_scorecard
+
+
+st.set_page_config(
+    page_title="Data Quality Scorecard",
+    layout="wide",
+)
+
+
+def main():
+    st.title("📊 Data Quality Scorecard Automation")
+
+    st.markdown(
+        """
+This app loads **load_dataset.xlsx** from the `data/` folder and calculates:
+
+- ✅ Completeness
+- 🧬 Uniqueness
+- ✅ Validity
+- ⏱ Timeliness
+
+You can reuse this for any similar dataset by just replacing the Excel file.
+"""
+    )
+
     # --- Load dataset ---
     try:
         df = load_dataset()
